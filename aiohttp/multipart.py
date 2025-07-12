@@ -329,7 +329,7 @@ class BodyPartReader:
         """
         if self._at_eof:
             return b""
-        if self._length:
+        if self._length is not None:
             chunk = await self._read_chunk_from_length(size)
         else:
             chunk = await self._read_chunk_from_stream(size)
